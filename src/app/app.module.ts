@@ -4,15 +4,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { DelonMockModule } from '@delon/mock';
 
-import { AppComponent } from './app.component';
-
 import { SharedModule } from 'shared/shared.module';
 
 import { environment } from '@env/environment';
-import * as MOCKDATA from '../../../_mock';
+import * as MOCKDATA from '../../_mock';
 import { httpInterceptorProviders } from 'shared/interceptors';
 import { AppRoutingModule } from './app-routing.module';
-import { LayoutModule } from '../layout/layout.module';
+import { LayoutModule } from './layout/layout.module';
+import { Router } from '@angular/router';
+import { HomeModule } from './pages/home/home.module';
+import { AppComponent } from './app-root/app.component';
 
 const MOCKMODULE = !environment.production ? [DelonMockModule.forRoot({ data: MOCKDATA })] : [];
 
@@ -27,11 +28,17 @@ const MOCKMODULE = !environment.production ? [DelonMockModule.forRoot({ data: MO
     AppRoutingModule,
     SharedModule,
     LayoutModule,
-    ...MOCKMODULE
+    ...MOCKMODULE,
+    HomeModule
   ],
   providers: [
     httpInterceptorProviders
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(router: Router) {
+    const replacer = (key, value) => (typeof value === 'function') ? value.name : value;
+    console.log('Routes: ', JSON.stringify(router.config, replacer, 2));
+  }
+}

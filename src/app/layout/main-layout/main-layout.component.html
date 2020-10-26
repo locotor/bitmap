@@ -19,7 +19,27 @@
         <nz-divider nzType="vertical"></nz-divider>
         <nz-avatar nzIcon="user"></nz-avatar>
     </mat-toolbar>
-    <div class="main-content-container">
-        <router-outlet></router-outlet>
-    </div>
+    <mat-sidenav-container class="group-side-container" style="height: 100%">
+        <mat-sidenav mode="side" opened class="side-nav-wrapper">
+            <section class="side-nav-section">
+                <nav>
+                    <ul>
+                        <li *ngFor="let relevant of relevantNavs">
+                            <div class="nav-item-wrapper">
+                                <mat-icon>{{relevant.icon}}</mat-icon>
+                                <span class="name mat-body-strong">{{relevant.name}}</span>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="nav-item-wrapper">
+                    <mat-icon>settings</mat-icon>
+                    <span class="name mat-body-strong">设置</span>
+                </div>
+            </section>
+        </mat-sidenav>
+        <mat-sidenav-content class="content-container">
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
 </div>

@@ -8,7 +8,10 @@ import { ProjectTasksComponent } from './project-tasks/project-tasks.component';
 
 
 @NgModule({
-  declarations: [ProjectComponent, ProjectTasksComponent],
+  declarations: [
+    ProjectComponent,
+    ProjectTasksComponent
+  ],
   imports: [
     CommonModule,
     SharedModule,
