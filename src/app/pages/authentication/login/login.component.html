@@ -1,0 +1,37 @@
+<div class="login-root">
+  <form class="login-form" [formGroup]="loginForm" (ngSubmit)="submitLoginForm()">
+    <div class="form-field-row">
+      <mat-form-field appearance="outline">
+        <mat-label>用户名或邮箱</mat-label>
+        <input matInput formControlName="usernameOrEmail" required>
+        <mat-error *ngIf="usernameOrEmail.errors?.required">用户名或邮箱是必填项。</mat-error>
+        <mat-error *ngIf="usernameOrEmail.errors?.maxlength">
+          user name letters should less than {{usernameOrEmail.errors?.maxlength.requiredLength}}.
+        </mat-error>
+      </mat-form-field>
+      <div class="field-feedback">
+        <mat-icon class="checked-icon" *ngIf="usernameOrEmail.dirty&&usernameOrEmail.valid">check_circle_outline</mat-icon>
+        <mat-icon color="warn" *ngIf="usernameOrEmail.dirty&&usernameOrEmail.invalid">highlight_off</mat-icon>
+        <mat-icon color="accent" *ngIf="usernameOrEmail.pending">hourglass_empty</mat-icon>
+      </div>
+    </div>
+    <div class="form-field-row">
+      <mat-form-field appearance="outline">
+        <mat-label>密码</mat-label>
+        <input matInput formControlName="password" required [type]="isPasswordHide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix type="button" (click)="isPasswordHide = !isPasswordHide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="isPasswordHide">
+          <mat-icon>{{isPasswordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+      <div class="field-feedback">
+        <mat-icon class="checked-icon" *ngIf="password.dirty&&password.valid">check_circle_outline</mat-icon>
+        <mat-icon color="warn" *ngIf="password.dirty&&password.invalid">highlight_off</mat-icon>
+      </div>
+    </div>
+    <div class="form-field-row">
+      <button mat-raised-button type="submit" color="primary" [disabled]="!loginForm.valid">登录</button>
+      <!-- <button mat-button>cancel</button> -->
+    </div>
+  </form>
+</div>

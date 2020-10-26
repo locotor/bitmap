@@ -1,0 +1,62 @@
+@import "~@angular/material/theming";
+@import "./themes/indigo-pink-default.scss";
+
+@include mat-core();
+
+html,
+body {
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+ul,
+li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.form-field-row {
+  display: flex;
+
+  mat-form-field {
+    flex-grow: 1;
+  }
+
+  // keep same space with mat-form-field
+  .field-feedback {
+    display: flex;
+    align-items: center;
+    width: 48px;
+    padding-left: 8px;
+    margin: 0.25em 0;
+    padding-bottom: 1.34375em;
+
+    .checked-icon {
+      color: #8bc34a;
+    }
+
+    .faild-icon {
+      color: #f44336;
+    }
+  }
+}
+
+.mat-basic-chip {
+  padding: 4px 6px;
+  margin: 0 5px 5px 0;
+  border-radius: 4px;
+}
+
+.task-detail-root .task-checkbox .mat-checkbox-inner-container {
+  width: 32px;
+  height: 32px;
+}

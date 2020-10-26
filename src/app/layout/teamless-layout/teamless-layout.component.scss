@@ -1,0 +1,21 @@
+.teamless-layout-container {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+}
+
+.main-header-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .app-title {
+    margin: 0;
+  }
+}
+
+.main-content-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}

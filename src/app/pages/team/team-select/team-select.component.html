@@ -1,0 +1,20 @@
+<div class="select-layout-wrapper">
+    <div>
+        <h1>选择一个团队来进入工作区</h1>
+    </div>
+    <mat-divider></mat-divider>
+    <div *ngIf="teams.length" class="team-select-wrapper">
+        <mat-nav-list>
+            <mat-list-item *ngFor="let team of teams">
+                <img matListAvatar src="http://placekitten.com/50/50">
+                <a matLine [routerLink]="'/team/'+team.id"> {{team.teamName }}</a>
+                <mat-icon>input</mat-icon>
+            </mat-list-item>
+        </mat-nav-list>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="team-create-wrapper mat-elevation-z2">
+        <button class="create-team-button" mat-raised-button color="primary"
+            (click)="openTeamCreatorDialog()">创建团队</button>
+    </div>
+</div>

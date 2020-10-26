@@ -1,0 +1,16 @@
+:host {
+  display: block;
+}
+
+.theme-picker-container {
+  display: flex;
+  align-items: center;
+  margin: 0 5px;
+}
+
+.theme-picker-button {
+  cursor: pointer;
+  height: 18px;
+  width: 18px;
+  font-size: 18px;
+}
