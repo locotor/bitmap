@@ -1,0 +1,19 @@
+<div class="pulish-root-wrapper">
+    <nz-steps [nzCurrent]="currentStep" style="margin: 0 50px;">
+        <nz-step nzTitle="选择数据源" nzDescription="步骤描述步骤描述步骤描述步骤描述"></nz-step>
+        <nz-step nzTitle="选择样式" nzDescription="步骤描述步骤描述步骤描述步骤描述"> </nz-step>
+        <nz-step nzTitle="发布" nzDescription="步骤描述步骤描述"></nz-step>
+    </nz-steps>
+    <div class="steps-content">{{ index }}</div>
+    <div class="steps-action">
+        <button mat-raised-button (click)="pre()" *ngIf="currentStep > 0">
+            <span>上一步</span>
+        </button>
+        <button mat-raised-button (click)="next()" *ngIf="currentStep < 2">
+            <span>下一步</span>
+        </button>
+        <button mat-raised-button (click)="done()" *ngIf="currentStep === 2">
+            <span>完成</span>
+        </button>
+    </div>
+</div>

@@ -20,6 +20,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
 //#endregion
 
+//#region zorro
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
@@ -27,6 +28,8 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzCommentModule } from 'ng-zorro-antd/comment';
 import { NzGridModule } from "ng-zorro-antd/grid";
 import { NzMenuModule } from "ng-zorro-antd/menu";
+import { NzStepsModule } from 'ng-zorro-antd/steps';
+//#endregion
 
 import { ThemePickerComponent } from './components/theme-picker/theme-picker.component';
 import { TaskListItemComponent } from './components/task-list-item/task-list-item.component';
@@ -65,7 +68,8 @@ const AntModules = [
     NzGridModule,
     NzTagModule,
     NzCommentModule,
-    NzMenuModule
+    NzMenuModule,
+    NzStepsModule
 ];
 
 @NgModule({

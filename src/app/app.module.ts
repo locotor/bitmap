@@ -14,6 +14,7 @@ import { LayoutModule } from './layout/layout.module';
 import { Router } from '@angular/router';
 import { HomeModule } from './pages/home/home.module';
 import { AppComponent } from './app-root/app.component';
+import { PublishModule } from './pages/publish/publish.module';
 
 const MOCKMODULE = !environment.production ? [DelonMockModule.forRoot({ data: MOCKDATA })] : [];
 
@@ -29,7 +30,8 @@ const MOCKMODULE = !environment.production ? [DelonMockModule.forRoot({ data: MO
     SharedModule,
     LayoutModule,
     ...MOCKMODULE,
-    HomeModule
+    HomeModule,
+    PublishModule
   ],
   providers: [
     httpInterceptorProviders

@@ -5,15 +5,14 @@ import { TeamlessLayoutComponent } from './layout/teamless-layout/teamless-layou
 import { AuthenticationRootComponent } from './pages/authentication/authentication-root/authentication-root.component';
 import { AuthenticationModule } from './pages/authentication/authentication.module';
 import { HomeRootComponent } from './pages/home/home-root/home-root.component';
-import { TeamSelectComponent } from './pages/team/team-select/team-select.component';
+import { PublishRootComponent } from './pages/publish/publish-root/publish-root.component';
 
 const routes: Routes = [
   {
     path: '',
     component: TeamlessLayoutComponent,
     children: [
-      { path: 'authentication', component: AuthenticationRootComponent },
-      { path: 'team-select', component: TeamSelectComponent },
+      { path: 'authentication', component: AuthenticationRootComponent }
     ]
   },
   {
@@ -26,13 +25,8 @@ const routes: Routes = [
         component: HomeRootComponent
       },
       {
-        path: 'team/:id',
-        loadChildren: () => import('./pages/team/team.module').then(m => m.TeamModule),
-        data: { preload: true }
-      },
-      {
-        path: 'project/:id',
-        loadChildren: () => import('./pages/project/project.module').then(m => m.ProjectModule),
+        path: 'publish',
+        component: PublishRootComponent
       }
     ]
   }

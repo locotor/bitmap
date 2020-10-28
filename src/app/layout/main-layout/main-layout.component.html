@@ -23,11 +23,11 @@
                     <ul class="side-nav-root" nz-menu [nzMode]="'vertical'">
                         <li nz-menu-item>
                             <i nz-icon nzType="home"></i>
-                            首页
+                            <a [routerLink]="['/', 'home']">首页</a>
                         </li>
                         <li nz-menu-item>
                             <i nz-icon nzType="cloud-server"></i>
-                            服务发布
+                            <a [routerLink]="['/', 'publish']">服务发布</a>
                         </li>
                         <li nz-submenu nzTitle="工作区" nzIcon="appstore">
                             <ul>

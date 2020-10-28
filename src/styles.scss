@@ -50,6 +50,14 @@ li {
   }
 }
 
+.flex-center-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .mat-basic-chip {
   padding: 4px 6px;
   margin: 0 5px 5px 0;

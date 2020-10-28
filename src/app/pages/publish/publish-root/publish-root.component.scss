@@ -1,0 +1,25 @@
+.pulish-root-wrapper {
+  display: flex;
+  flex-flow: column;
+  padding: 20px;
+  height: 100%;
+}
+
+.steps-content {
+  flex: 1;
+  margin-top: 16px;
+  border: 1px dashed #999999;
+  border-radius: 6px;
+  background-color: #fafafa;
+  min-height: 200px;
+  text-align: center;
+  padding-top: 80px;
+}
+
+.steps-action {
+  margin-top: 24px;
+}
+
+button {
+  margin-right: 8px;
+}
