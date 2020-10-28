@@ -1,13 +1,8 @@
 <div class="main-layout-container">
+    <!-- app header -->
     <mat-toolbar color="primary" class="main-header-nav mat-elevation-z4">
         <span class="mat-h1">Bitmap</span>
         <div class="flex-spacer">
-            <mat-form-field class="group-search">
-                <input matInput type="text">
-                <button mat-button matSuffix mat-icon-button aria-label="search">
-                    <mat-icon>search</mat-icon>
-                </button>
-            </mat-form-field>
         </div>
         <div class="team-selector-container">
             <span class="mat-body">市场监管项目组</span>
@@ -19,25 +14,43 @@
         <nz-divider nzType="vertical"></nz-divider>
         <nz-avatar nzIcon="user"></nz-avatar>
     </mat-toolbar>
-    <mat-sidenav-container class="group-side-container" style="height: 100%">
+    <!-- app body -->
+    <mat-sidenav-container class="main-body-container">
+        <!-- 侧边导航 -->
         <mat-sidenav mode="side" opened class="side-nav-wrapper">
             <section class="side-nav-section">
                 <nav>
-                    <ul>
-                        <li *ngFor="let relevant of relevantNavs">
-                            <div class="nav-item-wrapper">
-                                <mat-icon>{{relevant.icon}}</mat-icon>
-                                <span class="name mat-body-strong">{{relevant.name}}</span>
-                            </div>
+                    <ul class="side-nav-root" nz-menu [nzMode]="'vertical'">
+                        <li nz-menu-item>
+                            <i nz-icon nzType="home"></i>
+                            首页
+                        </li>
+                        <li nz-menu-item>
+                            <i nz-icon nzType="cloud-server"></i>
+                            服务发布
+                        </li>
+                        <li nz-submenu nzTitle="工作区" nzIcon="appstore">
+                            <ul>
+                                <li nz-menu-item>数据源</li>
+                                <li nz-menu-item>样式库</li>
+                            </ul>
+                        </li>
+                        <li nz-submenu nzTitle="服务管理" nzIcon="control">
+                            <ul>
+                                <li nz-menu-item>服务预览</li>
+                                <li nz-menu-item>服务管理</li>
+                                <li nz-menu-item>服务分组</li>
+                            </ul>
                         </li>
                     </ul>
                 </nav>
                 <div class="nav-item-wrapper">
-                    <mat-icon>settings</mat-icon>
+                    <i nz-icon nzType="setting"></i>
                     <span class="name mat-body-strong">设置</span>
                 </div>
             </section>
         </mat-sidenav>
+        <!-- 应用页容器 -->
         <mat-sidenav-content class="content-container">
             <router-outlet></router-outlet>
         </mat-sidenav-content>

@@ -4,7 +4,7 @@ import { MainLayoutComponent } from './layout/main-layout/main-layout.component'
 import { TeamlessLayoutComponent } from './layout/teamless-layout/teamless-layout.component';
 import { AuthenticationRootComponent } from './pages/authentication/authentication-root/authentication-root.component';
 import { AuthenticationModule } from './pages/authentication/authentication.module';
-import { HomeComponent } from './pages/home/home/home.component';
+import { HomeRootComponent } from './pages/home/home-root/home-root.component';
 import { TeamSelectComponent } from './pages/team/team-select/team-select.component';
 
 const routes: Routes = [
@@ -23,7 +23,7 @@ const routes: Routes = [
     children: [
       {
         path: 'home',
-        component: HomeComponent
+        component: HomeRootComponent
       },
       {
         path: 'team/:id',

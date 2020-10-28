@@ -49,15 +49,23 @@
   }
 }
 
+.main-body-container {
+  flex: 1;
+}
+
 .side-nav-wrapper {
+  width: 18%;
   padding: 0 60px 40px;
+
+  .side-nav-root {
+    border: 0;
+  }
 
   .side-nav-section {
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;
     padding-top: 40px;
-    width: 176px;
     height: 100%;
 
     li {

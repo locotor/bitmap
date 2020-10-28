@@ -25,6 +25,8 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzCommentModule } from 'ng-zorro-antd/comment';
+import { NzGridModule } from "ng-zorro-antd/grid";
+import { NzMenuModule } from "ng-zorro-antd/menu";
 
 import { ThemePickerComponent } from './components/theme-picker/theme-picker.component';
 import { TaskListItemComponent } from './components/task-list-item/task-list-item.component';
@@ -60,8 +62,10 @@ const AntModules = [
     NzAvatarModule,
     NzIconModule,
     NzDividerModule,
+    NzGridModule,
     NzTagModule,
-    NzCommentModule
+    NzCommentModule,
+    NzMenuModule
 ];
 
 @NgModule({
