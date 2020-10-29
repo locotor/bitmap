@@ -28,7 +28,8 @@ const routes: Routes = [
         path: 'publish',
         component: PublishRootComponent
       },
-      { path: 'data-store', loadChildren: () => import('./pages/data-store/data-store.module').then(m => m.DataStoreModule) }
+      { path: 'data-store', loadChildren: () => import('./pages/data-store/data-store.module').then(m => m.DataStoreModule) },
+      { path: 'layer-management', loadChildren: () => import('./pages/layer-management/layer-management.module').then(m => m.LayerManagementModule) },
     ]
   },
   // Todo add 404 page
