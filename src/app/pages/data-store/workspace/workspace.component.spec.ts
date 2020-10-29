@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DataStoreComponent } from './workspace.component';
+import { WorkspaceComponent } from './workspace.component';
 
-describe('DataStoreComponent', () => {
-  let component: DataStoreComponent;
-  let fixture: ComponentFixture<DataStoreComponent>;
+describe('WorkspaceComponent', () => {
+  let component: WorkspaceComponent;
+  let fixture: ComponentFixture<WorkspaceComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DataStoreComponent ]
+      declarations: [ WorkspaceComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DataStoreComponent);
+    fixture = TestBed.createComponent(WorkspaceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

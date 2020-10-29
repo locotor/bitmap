@@ -1,9 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { WorkspaceComponent } from './workspace/workspace.component';
 
-import { DataStoreComponent } from './data-store.component';
 
-const routes: Routes = [{ path: '', component: DataStoreComponent }];
+const routes: Routes = [
+  {
+    path: '',
+    children: [
+      {
+        path: 'workspace',
+        component: WorkspaceComponent
+      }
+    ]
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

@@ -29,10 +29,17 @@
                             <i nz-icon nzType="cloud-server"></i>
                             <a [routerLink]="['/', 'publish']">服务发布</a>
                         </li>
-                        <li nz-submenu nzTitle="工作区" nzIcon="appstore">
+                        <li nz-submenu nzTitle="数据存储" nzIcon="appstore">
                             <ul>
-                                <li nz-menu-item>数据源</li>
-                                <li nz-menu-item>样式库</li>
+                                <li nz-menu-item>
+                                    <a [routerLink]="['/','data-store','workspace']">工作区</a>
+                                </li>
+                                <li nz-menu-item>
+                                    <a [routerLink]="['/','data-store','workspace']">数据源</a>
+                                </li>
+                                <li nz-menu-item>
+                                    <a [routerLink]="['/','data-store','workspace']">样式库</a>
+                                </li>
                             </ul>
                         </li>
                         <li nz-submenu nzTitle="服务管理" nzIcon="control">

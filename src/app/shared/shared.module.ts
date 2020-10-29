@@ -29,6 +29,7 @@ import { NzCommentModule } from 'ng-zorro-antd/comment';
 import { NzGridModule } from "ng-zorro-antd/grid";
 import { NzMenuModule } from "ng-zorro-antd/menu";
 import { NzStepsModule } from 'ng-zorro-antd/steps';
+import { NzTableModule } from 'ng-zorro-antd/table';
 //#endregion
 
 import { ThemePickerComponent } from './components/theme-picker/theme-picker.component';
@@ -69,7 +70,8 @@ const AntModules = [
     NzTagModule,
     NzCommentModule,
     NzMenuModule,
-    NzStepsModule
+    NzStepsModule,
+    NzTableModule
 ];
 
 @NgModule({
