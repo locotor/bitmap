@@ -1,0 +1,30 @@
+<div class="styles-main-container mat-elevation-z2">
+    <h2>样式库</h2>
+    <mat-divider></mat-divider>
+    <div class="table-header-operations">
+        <button mat-raised-button>新增地图样式</button>
+        <button mat-raised-button>移除选中的样式</button>
+    </div>
+    <nz-table #borderedTable nzBordered [nzData]="dataSource" [nzScroll]="{ y: '450px' }">
+        <thead>
+            <tr>
+                <th nzWidth="75px"></th>
+                <th>样式名称</th>
+                <th>所属工作区</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of borderedTable.data">
+                <td nzChecked></td>
+                <td>{{ data.name }}</td>
+                <td>{{ data.name }}</td>
+                <td>
+                    <a>删除</a>
+                    <nz-divider nzType="vertical"></nz-divider>
+                    <a>编辑</a>
+                </td>
+            </tr>
+        </tbody>
+    </nz-table>
+</div>

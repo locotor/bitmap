@@ -58,6 +58,13 @@ li {
   justify-content: center;
 }
 
+.table-header-operations {
+  margin: 16px 0;
+  button {
+    margin-left: 8px;
+  }
+}
+
 .mat-basic-chip {
   padding: 4px 6px;
   margin: 0 5px 5px 0;
