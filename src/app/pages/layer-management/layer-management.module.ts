@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 
 import { LayerManagementRoutingModule } from './layer-management-routing.module';
 import { LayerPreviewComponent } from './layer-preview/layer-preview.component';
+import { SharedModule } from 'shared/shared.module';
 
 
 @NgModule({
   declarations: [LayerPreviewComponent],
   imports: [
     CommonModule,
-    LayerManagementRoutingModule
+    LayerManagementRoutingModule,
+    SharedModule
   ]
 })
 export class LayerManagementModule { }

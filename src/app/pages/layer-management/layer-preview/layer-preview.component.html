@@ -1,2 +1,25 @@
-<div class="layer-preview-main-container mat-elevation-z2">
+<div class="layer-preview-main-container">
+    <h2>地图预览</h2>
+    <mat-divider></mat-divider>
+    <div class="map-preview-container">
+        <mat-card class="layer-list-container">
+            <mat-card-header>
+                <mat-card-title>服务列表</mat-card-title>
+                <mat-card-subtitle>勾选来预览服务</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-selection-list role="list">
+                    <mat-list-option role="listitem">地图服务 1</mat-list-option>
+                    <mat-list-option role="listitem">地图服务 2</mat-list-option>
+                    <mat-list-option role="listitem">地图服务 3</mat-list-option>
+                    <mat-list-option role="listitem">地图服务 4</mat-list-option>
+                    <mat-list-option role="listitem">地图服务 5</mat-list-option>
+                    <mat-list-option role="listitem">地图服务 6</mat-list-option>
+                </mat-selection-list>
+            </mat-card-content>
+        </mat-card>
+        <div class="map-container">
+            <div id="map" #mapContainer></div>
+        </div>
+    </div>
 </div>
