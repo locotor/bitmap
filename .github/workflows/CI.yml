@@ -23,6 +23,7 @@ jobs:
       
       - name: npm install and build
         run: |
+          npm install @angular/cli -g
           npm install
           ng build --prod --baseHref /bitmap/ --deployUrl /bitmap/
         env:
