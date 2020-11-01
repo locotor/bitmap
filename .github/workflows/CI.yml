@@ -21,9 +21,12 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.1.2
       
+      - name: Angular Github Actions
+        uses: mayurrawte/github-angular-actions@latest
+      
       - name: npm install and build
         run: |
           npm install
-          ng build --prod
+          ng build --prod --baseHref /bitmap/ --deployHref /bitmap/
         env:
           CI: true
