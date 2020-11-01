@@ -21,18 +21,9 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.1.2
       
-      - name: Install dependencies
-        run: npm install
-        
-      - name: Build
-        run: ng build --prod --baseHref /bitmap/ --deployUrl /bitmap/
-        
-      - name: Deploy to Aliyu
-        uses: hengkx/ssh-deploy@v1.0.1
+      - name: npm install and build
+        run: |
+          npm install
+          ng build --prod --baseHref /bitmap/ --deployUrl /bitmap/
         env:
-          HOST: ${{ secrets.ALIYUN_HOST }}
-          USERNAME: ${{ secrets.ALIYUN_USER }}
-          PASSWORD: ${{ secrets.ALIYUN_PWD }}
-          PORT: 22
-          SOURCE: 'dist/'
-          TARGET: ${{ secrets.ALIYUN_DEPLOY_DEST_PATH }}
+          CI: true
