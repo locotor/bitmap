@@ -4,7 +4,7 @@ name: CI-Aliyun
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -17,21 +17,30 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
-      
+
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.1.2
-      
+
       - name: npm install and build
         run: |
           npm install
           npm run build
-      
-      - name: Deploy to Aliyun server
-        uses: easingthemes/ssh-deploy@v2.1.5
+
+      # - name: Deploy to Aliyun server
+      #   uses: easingthemes/ssh-deploy@v2.1.5
+      #   env:
+      #     SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+      #     ARGS: "-avz --delete"
+      #     SOURCE: "dist/"
+      #     REMOTE_HOST: ${{ secrets.ALIYUN_HOST }}
+      #     REMOTE_USER: ${{ secrets.ALIYUN_USER }}
+      #     TARGET: ${{ secrets.ALIYUN_DEPLOY_DEST_PATH }}
+      - name: deploy
+        id: funny-deploy
+        uses: BoatNg/funny-deploy@master
         env:
-          SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-          ARGS: "-avz --delete"
-          SOURCE: "dist/"
-          REMOTE_HOST: ${{ secrets.ALIYUN_HOST }}
-          REMOTE_USER: ${{ secrets.ALIYUN_USER }}
-          TARGET: ${{ secrets.ALIYUN_DEPLOY_DEST_PATH }}
+          REMOTE_HOST: '${{ secrets.ALIYUN_HOST }}'
+          REMOTE_USER: '${{ secrets.ALIYUN_USER }}'
+          REMOTE_PASSWORD: '${{ secrets.PWD }}'
+          REMOTE_PATH: ${{ secrets.ALIYUN_DEPLOY_DEST_PATH }}
+          SOURCE: 'dist/'
