@@ -26,21 +26,12 @@ jobs:
           npm install
           npm run build
 
-      # - name: Deploy to Aliyun server
-      #   uses: easingthemes/ssh-deploy@v2.1.5
-      #   env:
-      #     SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-      #     ARGS: "-avz --delete"
-      #     SOURCE: "dist/"
-      #     REMOTE_HOST: ${{ secrets.ALIYUN_HOST }}
-      #     REMOTE_USER: ${{ secrets.ALIYUN_USER }}
-      #     TARGET: ${{ secrets.ALIYUN_DEPLOY_DEST_PATH }}
-      - name: deploy
-        id: funny-deploy
-        uses: BoatNg/funny-deploy@master
+      - name: Deploy to Aliyun server
+        uses: easingthemes/ssh-deploy@v2.1.5
         env:
-          REMOTE_HOST: '${{ secrets.ALIYUN_HOST }}'
-          REMOTE_USER: '${{ secrets.ALIYUN_USER }}'
-          REMOTE_PASSWORD: '${{ secrets.PWD }}'
-          REMOTE_PATH: ${{ secrets.ALIYUN_DEPLOY_DEST_PATH }}
-          SOURCE: 'dist/'
+          SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          ARGS: "-avz --delete"
+          SOURCE: "dist/"
+          REMOTE_HOST: ${{ secrets.ALIYUN_HOST }}
+          REMOTE_USER: ${{ secrets.ALIYUN_USER }}
+          TARGET: ${{ secrets.ALIYUN_DEPLOY_DEST_PATH }}
