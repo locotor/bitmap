@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "~10.2.0",
     "@angular/router": "~10.2.0",
     "@delon/mock": "^8.9.0",
+    "js-base64": "^3.5.2",
     "mapbox-gl": "^1.12.0",
     "ng-zorro-antd": "^10.0.2",
     "rxjs": "~6.6.3",
