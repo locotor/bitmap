@@ -13,7 +13,7 @@ export class AuthorizationInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const reqClone = request.clone({
-      setHeaders: { Authorization: Base64.encode('admin:geoserver') },
+      setHeaders: { Authorization: 'Basic ' + Base64.encode('admin:geoserver') },
     });
     return next.handle(reqClone);
   }
