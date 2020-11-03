@@ -1,15 +1,22 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { WorkspacesService } from 'core/http-apis/workspaces.service';
 
 @Component({
   templateUrl: './workspace.component.html',
   styleUrls: ['./workspace.component.scss']
 })
-export class WorkspaceComponent implements AfterViewInit {
+export class WorkspaceComponent implements OnInit {
 
   dataSource = ELEMENT_DATA;
 
-  ngAfterViewInit(): void {
-    throw new Error('Method not implemented.');
+  constructor(
+    private workspacesApi: WorkspacesService
+  ) { }
+
+  ngOnInit(): void {
+    this.workspacesApi.getWorkspacesList().subscribe(data => {
+      console.log('test geoserver api: ', data)
+    })
   }
 
 }

@@ -8,7 +8,7 @@ import { SharedModule } from 'shared/shared.module';
 
 import { environment } from '@env/environment';
 import * as MOCKDATA from '../../_mock';
-import { httpInterceptorProviders } from 'shared/interceptors';
+import { httpInterceptorProviders } from 'core/interceptors';
 import { AppRoutingModule } from './app-routing.module';
 import { LayoutModule } from './layout/layout.module';
 import { Router } from '@angular/router';

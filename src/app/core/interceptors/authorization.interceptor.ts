@@ -3,16 +3,18 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Base64 } from 'js-base64';
 
 @Injectable()
-export class AuthenticationInterceptor implements HttpInterceptor {
-
-  constructor() {}
+export class AuthorizationInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    return next.handle(request);
+    const reqClone = request.clone({
+      setHeaders: { Authorization: Base64.encode('admin:geoserver') },
+    });
+    return next.handle(reqClone);
   }
 }
