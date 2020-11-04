@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { MaterialModules } from './barrels/material-barrel';
 import { AntModules } from './barrels/zorro-barrel';
@@ -19,12 +19,14 @@ import { SharedComponents } from './components';
         AntModules,
         CommonModule,
         ReactiveFormsModule,
+        FormsModule
     ],
     exports: [
         MaterialModules,
         AntModules,
         SharedComponents,
         ReactiveFormsModule,
+        FormsModule
     ]
 })
 export class SharedModule { }

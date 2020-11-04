@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Workspace } from 'core/types/workspaces';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -12,7 +13,7 @@ export class WorkspacesService {
   ) { }
 
   getWorkspacesList(): Observable<any> {
-    return this.http.get('rest/workspaces')
+    return this.http.get<Workspace[]>('rest/workspaces')
   }
 
 }

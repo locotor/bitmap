@@ -2,7 +2,7 @@
     <h2>工作区</h2>
     <mat-divider></mat-divider>
     <div class="table-header-operations">
-        <button mat-raised-button>新增工作区</button>
+        <button mat-raised-button (click)="openAddWorkspaceDialog()">新增工作区</button>
         <button mat-raised-button>移除选中的工作区</button>
     </div>
     <nz-table #borderedTable nzBordered [nzData]="dataSource" [nzScroll]="{ y: '450px' }">
@@ -10,8 +10,7 @@
             <tr>
                 <th nzWidth="75px"></th>
                 <th>工作区名称</th>
-                <th>默认工作区</th>
-                <th>隔离工作区</th>
+                <th>href</th>
                 <th>操作</th>
             </tr>
         </thead>
@@ -19,13 +18,14 @@
             <tr *ngFor="let data of borderedTable.data">
                 <td nzChecked></td>
                 <td>{{ data.name }}</td>
-                <td>
+                <!-- <td>
                     <ng-container *ngIf="data.isDefault;else isNotDefault">
                         <i nz-icon nzType="check" nzTheme="outline"></i>
                     </ng-container>
                     <ng-template #isNotDefault><i nz-icon nzType="close" nzTheme="outline"></i></ng-template>
                 </td>
-                <td><i nz-icon nzType="check" nzTheme="outline"></i></td>
+                <td><i nz-icon nzType="check" nzTheme="outline"></i></td> -->
+                <td>{{ data.href }}</td>
                 <td>
                     <a>删除</a>
                     <nz-divider nzType="vertical"></nz-divider>

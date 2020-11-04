@@ -40,7 +40,8 @@ const MOCKMODULE = !environment.production ? [DelonMockModule.forRoot({ data: MO
 })
 export class AppModule {
   constructor(router: Router) {
-    const replacer = (key, value) => (typeof value === 'function') ? value.name : value;
-    console.log('Routes: ', JSON.stringify(router.config, replacer, 2));
+    // for router test:
+    // const replacer = (key, value) => (typeof value === 'function') ? value.name : value;
+    // console.log('Routes: ', JSON.stringify(router.config, replacer, 2));
   }
 }
