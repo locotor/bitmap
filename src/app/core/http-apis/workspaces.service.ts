@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Workspace } from 'core/types/workspaces';
+import { AddWorkspaceFormData, AddWorkspaceParam, Workspace } from 'core/types/workspaces';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -12,8 +12,20 @@ export class WorkspacesService {
     private http: HttpClient
   ) { }
 
-  getWorkspacesList(): Observable<any> {
-    return this.http.get<Workspace[]>('rest/workspaces')
+  getWorkspaceList(): Observable<any> {
+    return this.http.get<Workspace[]>('rest/workspaces');
+  }
+
+  addWorkspace(formData: AddWorkspaceFormData) {
+    const param: AddWorkspaceParam = {
+      workspace: {
+        name: formData.name,
+        connectionParameters: {
+          entry: [{ '@key': 'url', $: formData.namespace }]
+        }
+      }
+    };
+    return this.http.post('rest/workspaces', param);
   }
 
 }

@@ -22,19 +22,20 @@ export class WorkspaceComponent implements OnInit {
   }
 
   getWorkspacesList(): void {
-    this.workspacesApi.getWorkspacesList().subscribe(data => {
+    this.workspacesApi.getWorkspaceList().subscribe(data => {
       this.dataSource = data.workspaces.workspace;
-    })
+    });
   }
 
   openAddWorkspaceDialog(): void {
     const dialogRef = this.dialog.open(AddWorkspaceDialogComponent, {
-      width: '450px',
-      data: { animal: '小熊猫' }
+      width: '450px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
+      if (result.isAddSucceed) {
+        this.getWorkspacesList();
+      }
     });
   }
 

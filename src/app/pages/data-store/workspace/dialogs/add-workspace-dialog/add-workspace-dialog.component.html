@@ -1,23 +1,24 @@
 <h2 mat-dialog-title>新建工作区</h2>
-<div mat-dialog-content>
+<mat-divider></mat-divider>
+<div mat-dialog-content class="dialog-content">
     <form>
         <div class="form-field-row">
             <mat-form-field appearance="outline">
                 <mat-label>工作区名称</mat-label>
-                <input matInput required>
+                <input matInput required [(ngModel)]="data.name" name="name">
             </mat-form-field>
         </div>
         <div class="form-field-row">
             <mat-form-field appearance="outline">
                 <mat-label>命名空间 URI</mat-label>
-                <input matInput required>
+                <input matInput required [(ngModel)]="data.namespace" name="namespace" placeholder="www.example.com">
                 <mat-hint>命名空间URI与这个工作区关联</mat-hint>
             </mat-form-field>
         </div>
     </form>
 </div>
 <mat-divider></mat-divider>
-<div mat-dialog-actions>
-    <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>新建</button>
-    <button mat-button>取消</button>
+<div mat-dialog-actions class="dialog-actions">
+    <button mat-raised-button (click)="addWorkspace()" >新建</button>
+    <button mat-button [mat-dialog-close]>取消</button>
 </div>
