@@ -65,13 +65,10 @@ li {
   }
 }
 
-.mat-basic-chip {
-  padding: 4px 6px;
-  margin: 0 5px 5px 0;
-  border-radius: 4px;
+.mat-dialog-container .dialog-content {
+  padding: 24px;
 }
 
-.task-detail-root .task-checkbox .mat-checkbox-inner-container {
-  width: 32px;
-  height: 32px;
+.mat-dialog-container .dialog-actions {
+  padding: 24px 0;
 }

@@ -28,4 +28,8 @@ export class WorkspacesService {
     return this.http.post('rest/workspaces', param);
   }
 
+  deleteWorkspace(workspaceName: string) {
+    return this.http.delete(`rest/workspaces/${workspaceName}`);
+  }
+
 }

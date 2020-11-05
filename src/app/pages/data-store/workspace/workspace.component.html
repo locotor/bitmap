@@ -27,7 +27,7 @@
                 <td><i nz-icon nzType="check" nzTheme="outline"></i></td> -->
                 <td>{{ data.href }}</td>
                 <td>
-                    <a>删除</a>
+                    <a (click)="openDeleteWorkspaceConfirm(data)">删除</a>
                     <nz-divider nzType="vertical"></nz-divider>
                     <a>编辑</a>
                 </td>
