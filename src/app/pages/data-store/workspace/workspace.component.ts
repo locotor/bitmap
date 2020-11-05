@@ -1,9 +1,9 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { WorkspacesService } from 'core/http-apis/workspaces.service';
-import { Workspace } from 'core/types/workspaces';
+import { Workspace, WorkspaceFormDialogData } from 'core/types/workspaces';
 import { ConfirmDialogComponent } from 'shared/components/confirm-dialog/confirm-dialog.component';
-import { AddWorkspaceDialogComponent } from './dialogs/add-workspace-dialog/add-workspace-dialog.component';
+import { WorkspaceFormDialogComponent } from './dialogs/workspace-form-dialog/workspace-form-dialog.component';
 
 @Component({
   templateUrl: './workspace.component.html',
@@ -12,6 +12,13 @@ import { AddWorkspaceDialogComponent } from './dialogs/add-workspace-dialog/add-
 export class WorkspaceComponent implements OnInit {
 
   dataSource: Workspace[] = [];
+  workspaceFormDialogData: WorkspaceFormDialogData = {
+    mode: 'create',
+    formData: {
+      name: '',
+      namespace: ''
+    }
+  };
 
   constructor(
     private workspacesApi: WorkspacesService,
@@ -29,14 +36,40 @@ export class WorkspaceComponent implements OnInit {
   }
 
   openAddWorkspaceDialog(): void {
-    const dialogRef = this.dialog.open(AddWorkspaceDialogComponent, {
-      width: '450px'
+    this.workspaceFormDialogData.mode = 'create';
+    this.workspaceFormDialogData.formData = {
+      name: '',
+      namespace: ''
+    };
+    const dialogRef = this.dialog.open(WorkspaceFormDialogComponent, {
+      width: '450px',
+      data: this.workspaceFormDialogData
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result && result.isAddSucceed) {
+      if (!result) { return }
+      this.workspacesApi.addWorkspace(result).subscribe(resp => {
         this.getWorkspacesList();
-      }
+      });
+    });
+  }
+
+  openEditWorkspaceDialog(workspace: Workspace): void {
+    this.workspaceFormDialogData.mode = 'edit';
+    this.workspaceFormDialogData.formData = {
+      name: workspace.name,
+      namespace: '尚未完善'
+    };
+    const dialogRef = this.dialog.open(WorkspaceFormDialogComponent, {
+      width: '450px',
+      data: this.workspaceFormDialogData
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (!result) { return }
+      this.workspacesApi.editWorkspace(result).subscribe(resp => {
+        this.getWorkspacesList();
+      })
     });
   }
 

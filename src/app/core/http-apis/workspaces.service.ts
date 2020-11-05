@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AddWorkspaceFormData, AddWorkspaceParam, Workspace } from 'core/types/workspaces';
+import { AddWorkspaceParam, Workspace } from 'core/types/workspaces';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -16,7 +16,7 @@ export class WorkspacesService {
     return this.http.get<Workspace[]>('rest/workspaces');
   }
 
-  addWorkspace(formData: AddWorkspaceFormData) {
+  addWorkspace(formData) {
     const param: AddWorkspaceParam = {
       workspace: {
         name: formData.name,
@@ -30,6 +30,15 @@ export class WorkspacesService {
 
   deleteWorkspace(workspaceName: string) {
     return this.http.delete(`rest/workspaces/${workspaceName}`);
+  }
+
+  editWorkspace(formData) {
+    const param: AddWorkspaceParam = {
+      workspace: {
+        name: formData.name,
+      }
+    };
+    return this.http.put('rest/workspaces', param);
   }
 
 }

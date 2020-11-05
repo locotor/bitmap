@@ -3,15 +3,18 @@ export interface Workspace {
     href: string;
 }
 
-export interface AddWorkspaceFormData {
-    name: string;
-    namespace: string;
+export interface WorkspaceFormDialogData {
+    mode: 'edit' | 'create';
+    formData: {
+        name: string;
+        namespace: string;
+    }
 }
 
 export interface AddWorkspaceParam {
     workspace: {
         name: string;
-        connectionParameters: {
+        connectionParameters?: {
             entry: [
                 { '@key': string, '$': string }
             ]

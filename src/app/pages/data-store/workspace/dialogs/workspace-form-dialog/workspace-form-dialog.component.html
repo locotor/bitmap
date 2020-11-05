@@ -1,17 +1,18 @@
-<h2 mat-dialog-title>新建工作区</h2>
+<h2 mat-dialog-title>{{data.mode === 'edit'?'编辑工作区':'新建工作区'}}</h2>
 <!-- <mat-divider></mat-divider> -->
 <div mat-dialog-content class="dialog-content">
     <form>
         <div class="form-field-row">
             <mat-form-field appearance="outline">
                 <mat-label>工作区名称</mat-label>
-                <input matInput required [(ngModel)]="data.name" name="name">
+                <input matInput required [(ngModel)]="data.formData.name" name="name">
             </mat-form-field>
         </div>
         <div class="form-field-row">
             <mat-form-field appearance="outline">
                 <mat-label>命名空间 URI</mat-label>
-                <input matInput required [(ngModel)]="data.namespace" name="namespace" placeholder="www.example.com">
+                <input matInput required [(ngModel)]="data.formData.namespace" name="namespace"
+                    placeholder="www.example.com">
                 <mat-hint>命名空间URI与这个工作区关联</mat-hint>
             </mat-form-field>
         </div>
@@ -19,6 +20,6 @@
 </div>
 <mat-divider></mat-divider>
 <div mat-dialog-actions class="dialog-actions">
-    <button mat-raised-button (click)="addWorkspace()">新建</button>
-    <button mat-button [mat-dialog-close]>取消</button>
+    <button mat-raised-button (click)="addWorkspace()">{{data.mode === 'edit'?'编辑':'新建'}}</button>
+    <button mat-button [mat-dialog-close]="false">取消</button>
 </div>
