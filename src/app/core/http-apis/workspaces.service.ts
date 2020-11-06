@@ -32,13 +32,13 @@ export class WorkspacesService {
     return this.http.delete(`rest/workspaces/${workspaceName}`);
   }
 
-  editWorkspace(formData) {
+  editWorkspace(workspaceName, formData) {
     const param: AddWorkspaceParam = {
       workspace: {
         name: formData.name,
       }
     };
-    return this.http.put('rest/workspaces', param);
+    return this.http.put(`rest/workspaces/${workspaceName}`, param);
   }
 
 }

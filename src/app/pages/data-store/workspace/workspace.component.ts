@@ -67,7 +67,7 @@ export class WorkspaceComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (!result) { return }
-      this.workspacesApi.editWorkspace(result).subscribe(resp => {
+      this.workspacesApi.editWorkspace(workspace.name, result).subscribe(resp => {
         this.getWorkspacesList();
       })
     });
