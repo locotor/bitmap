@@ -30,6 +30,8 @@
                     <a (click)="openDeleteWorkspaceConfirm(data)">删除</a>
                     <nz-divider nzType="vertical"></nz-divider>
                     <a (click)="openEditWorkspaceDialog(data)">编辑</a>
+                    <nz-divider nzType="vertical"></nz-divider>
+                    <a [routerLink]="['./',data.name,'data-source']">数据源</a>
                 </td>
             </tr>
         </tbody>

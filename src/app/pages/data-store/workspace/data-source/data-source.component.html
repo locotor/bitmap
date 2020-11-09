@@ -9,21 +9,21 @@
         <thead>
             <tr>
                 <th nzWidth="75px"></th>
-                <th>数据类型</th>
                 <th>数据源名称</th>
                 <th>所属工作区</th>
-                <th>启用</th>
+                <th nzWidth="300px">描述</th>
+                <th nzWidth="75px">启用</th>
                 <th>操作</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let data of borderedTable.data">
                 <td nzChecked></td>
-                <td>{{ data.type }}</td>
-                <td>{{ data.name }}</td>
-                <td>{{ data.name }}</td>
+                <td>{{ data?.name }}</td>
+                <td>{{ workspaceName}}</td>
+                <td>{{ (data.detail | async)?.dataStore.description}}</td>
                 <td>
-                    <ng-container *ngIf="data.isDefault;else isNotDefault">
+                    <ng-container *ngIf="(data.detail | async)?.dataStore.enabled;else isNotDefault">
                         <i nz-icon nzType="check" nzTheme="outline"></i>
                     </ng-container>
                     <ng-template #isNotDefault><i nz-icon nzType="close" nzTheme="outline"></i></ng-template>
