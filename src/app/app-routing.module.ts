@@ -5,7 +5,7 @@ import { TeamlessLayoutComponent } from './layout/teamless-layout/teamless-layou
 import { AuthenticationRootComponent } from './pages/authentication/authentication-root/authentication-root.component';
 import { AuthenticationModule } from './pages/authentication/authentication.module';
 import { HomeRootComponent } from './pages/home/home-root/home-root.component';
-import { PublishRootComponent } from './pages/publish/publish-root/publish-root.component';
+import { PublishRootComponent } from './pages/publish/publish-root.component';
 
 const routes: Routes = [
   {
