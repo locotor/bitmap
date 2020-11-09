@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { DataSourceService } from 'core/http-apis/data-source.service';
+import { WorkspacesService } from 'core/http-apis/workspaces.service';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   templateUrl: './publish-root.component.html',
@@ -6,45 +10,70 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PublishRootComponent implements OnInit {
   currentStep = 0;
-  index = '选择数据源';
+  formData = {
+    workspace: '',
+    dataStore: '',
+    featureType: {
+      name: "",
+      title: "",
+      abstract: "",
+      keywords: {
+        string: []
+      },
+      enabled: true,
+      srs: "EPSG:4490",
+      nativeBoundingBox: {
+        "minx": 105.2897713647602,
+        "maxx": 110.19555378960645,
+        "miny": 28.163460419722746,
+        "maxy": 32.20413263177634,
+        "crs": "EPSG:4490"
+      },
+      latLonBoundingBox: {
+        "minx": 105.2897713647602,
+        "maxx": 110.19555378960645,
+        "miny": 28.163460419722746,
+        "maxy": 32.20413263177634,
+        "crs": "EPSG:4490"
+      }
+    }
+  }
+  workspaceList$: Observable<any>;
+  dataStoreList = [];
 
-  constructor() { }
+  constructor(
+    private workspacesApi: WorkspacesService,
+    private dataSourceApi: DataSourceService,
+  ) { }
 
   ngOnInit(): void {
+    this.workspaceList$ = this.workspacesApi.getWorkspaceList().pipe(
+      map(data => data.workspaces.workspace)
+    );
+  }
+
+  handleWorkspaceSelected(e) {
+    this.getDataStoreList(e.value);
+  }
+
+  getDataStoreList(workspaceName: string) {
+    this.dataStoreList = [];
+    this.dataSourceApi.getDataSourceList(workspaceName).subscribe(resp => {
+      if (!resp) { return; }
+      this.dataStoreList = resp.dataStores.dataStore;
+    });
   }
 
   pre(): void {
     this.currentStep -= 1;
-    this.changeContent();
   }
 
   next(): void {
     this.currentStep += 1;
-    this.changeContent();
   }
 
-  done(): void {
+  publish(): void {
     console.log('done');
   }
 
-  changeContent(): void {
-    switch (this.currentStep) {
-      case 0: {
-        this.index = '选择数据源';
-        break;
-      }
-      case 1: {
-        this.index = '选择样式';
-        break;
-      }
-      case 2: {
-        this.index = '发布服务';
-        break;
-      }
-      default: {
-        this.index = 'error';
-      }
-    }
-
-  }
 }

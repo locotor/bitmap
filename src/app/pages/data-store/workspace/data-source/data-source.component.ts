@@ -13,7 +13,7 @@ export class DataSourceComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private dataSourceService: DataSourceService
+    private dataSourceApi: DataSourceService
   ) { }
 
   ngOnInit(): void {
@@ -25,12 +25,12 @@ export class DataSourceComponent implements OnInit {
   }
 
   getDataSourceList(): void {
-    this.dataSourceService.getDataSourceList(this.workspaceName).subscribe(resp => {
+    this.dataSourceApi.getDataSourceList(this.workspaceName).subscribe(resp => {
       if (!resp) { return; }
       this.dataSource = resp.dataStores.dataStore.map(store => {
         return {
           name: store.name,
-          detail: this.dataSourceService.getDetailJson(store.href)
+          detail: this.dataSourceApi.getDetailJson(store.href)
         }
       });
       console.log(this.dataSource);

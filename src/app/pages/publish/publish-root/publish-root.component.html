@@ -2,11 +2,138 @@
     <h2>服务发布</h2>
     <mat-divider></mat-divider>
     <nz-steps [nzCurrent]="currentStep" style="margin: 16px 50px 8px;">
-        <nz-step nzTitle="选择数据源" nzDescription="步骤描述步骤描述"></nz-step>
-        <nz-step nzTitle="选择样式" nzDescription="步骤描述步骤描述"> </nz-step>
-        <nz-step nzTitle="发布" nzDescription="步骤描述步骤描述"></nz-step>
+        <nz-step nzTitle="基础信息" nzDescription="步骤描述步骤描述"></nz-step>
+        <nz-step nzTitle="选择数据源" nzDescription="步骤描述步骤描述"> </nz-step>
+        <nz-step nzTitle="选择样式" nzDescription="步骤描述步骤描述"></nz-step>
     </nz-steps>
-    <div class="steps-content">{{ index }}</div>
+    <div class="steps-content">
+        <form [ngSwitch]="currentStep" class="flex-center-container">
+            <!-- 基础信息 -->
+            <div style="width: 50%;" *ngSwitchCase="0">
+                <div class="form-field-row">
+                    <mat-form-field appearance="outline">
+                        <mat-label>服务名称</mat-label>
+                        <input matInput required name="layerName" [(ngModel)]="formData.featureType.name">
+                    </mat-form-field>
+                </div>
+                <div class="form-field-row">
+                    <mat-form-field appearance="outline">
+                        <mat-label>服务标题</mat-label>
+                        <input matInput required name="layerTitle" [(ngModel)]="formData.featureType.title">
+                    </mat-form-field>
+                </div>
+                <div class="form-field-row">
+                    <mat-form-field appearance="outline">
+                        <mat-label>摘要</mat-label>
+                        <input matInput required name="namespace" [(ngModel)]="formData.featureType.abstract">
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- 数据源配置 -->
+            <div style="height:100%;width: 100%;" *ngSwitchCase="1" nz-row>
+                <div nz-col nzSpan="8" class="flex-center-container" style="flex-direction: column;">
+                    <div class="form-field-row">
+                        <mat-form-field appearance="outline">
+                            <mat-label>选择工作区</mat-label>
+                            <mat-select required (selectionChange)="handleWorkspaceSelected($event)">
+                                <mat-option>--</mat-option>
+                                <mat-option *ngFor="let workspace of (workspaceList$ | async)" [value]="workspace.name"
+                                    ([ngModel])="formData.workspace">
+                                    {{workspace.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="form-field-row">
+                        <mat-form-field appearance="outline">
+                            <mat-label>选择数据源</mat-label>
+                            <mat-select required [disabled]="!dataStoreList||dataStoreList.length === 0"
+                                ([ngModel])="formData.dataStore">
+                                <mat-option>--</mat-option>
+                                <mat-option *ngFor="let dataStore of dataStoreList" [value]="dataStore.name">
+                                    {{dataStore.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="form-field-row">
+                        <mat-form-field appearance="outline">
+                            <mat-label>配置SRS</mat-label>
+                            <input matInput required name="srs" [(ngModel)]="formData.featureType.srs">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <!-- 原生边界 -->
+                <div nz-col nzSpan="8" class="flex-center-container" style="flex-direction: column;">
+                    <h3>原生边界</h3>
+                    <div class="form-field-row">
+                        <mat-form-field appearance="outline">
+                            <mat-label>最大X</mat-label>
+                            <input matInput required name="nativeBoundingBoxMaxX"
+                                [(ngModel)]="formData.featureType.nativeBoundingBox.maxx">
+                        </mat-form-field>
+                    </div>
+                    <div class="form-field-row">
+                        <mat-form-field appearance="outline">
+                            <mat-label>最大Y</mat-label>
+                            <input matInput required name="nativeBoundingBoxMaxY"
+                                [(ngModel)]="formData.featureType.nativeBoundingBox.maxy">
+                        </mat-form-field>
+                    </div>
+                    <div class="form-field-row">
+                        <mat-form-field appearance="outline">
+                            <mat-label>最小X</mat-label>
+                            <input matInput required name="nativeBoundingBoxMinX"
+                                [(ngModel)]="formData.featureType.nativeBoundingBox.minx">
+                        </mat-form-field>
+                    </div>
+                    <div class="form-field-row">
+                        <mat-form-field appearance="outline">
+                            <mat-label>最小Y</mat-label>
+                            <input matInput required name="nativeBoundingBoxMinY"
+                                [(ngModel)]="formData.featureType.nativeBoundingBox.miny">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <!-- 经纬度边界 -->
+                <div nz-col nzSpan="8" class="flex-center-container" style="flex-direction: column;">
+                    <h3>经纬度边界</h3>
+                    <div class="form-field-row">
+                        <mat-form-field appearance="outline">
+                            <mat-label>最大X</mat-label>
+                            <input matInput required name="latLonBoundingBoxMaxX"
+                                [(ngModel)]="formData.featureType.latLonBoundingBox.maxx">
+                        </mat-form-field>
+                    </div>
+                    <div class="form-field-row">
+                        <mat-form-field appearance="outline">
+                            <mat-label>最大Y</mat-label>
+                            <input matInput required name="latLonBoundingBoxMaxY"
+                                [(ngModel)]="formData.featureType.latLonBoundingBox.maxy">
+                        </mat-form-field>
+                    </div>
+                    <div class="form-field-row">
+                        <mat-form-field appearance="outline">
+                            <mat-label>最小X</mat-label>
+                            <input matInput required name="latLonBoundingBoxMinX"
+                                [(ngModel)]="formData.featureType.latLonBoundingBox.minx">
+                        </mat-form-field>
+                    </div>
+                    <div class="form-field-row">
+                        <mat-form-field appearance="outline">
+                            <mat-label>最小Y</mat-label>
+                            <input matInput required name="latLonBoundingBoxMinY"
+                                [(ngModel)]="formData.featureType.latLonBoundingBox.miny">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <!-- 样式配置 -->
+            <div *ngSwitchCase="2">
+                选择样式
+            </div>
+        </form>
+    </div>
     <div class="steps-action">
         <button mat-raised-button (click)="pre()" *ngIf="currentStep > 0">
             <span>上一步</span>
@@ -14,8 +141,8 @@
         <button mat-raised-button (click)="next()" *ngIf="currentStep < 2">
             <span>下一步</span>
         </button>
-        <button mat-raised-button (click)="done()" *ngIf="currentStep === 2">
-            <span>完成</span>
+        <button mat-raised-button (click)="publish()" *ngIf="currentStep === 2">
+            <span>发布服务</span>
         </button>
     </div>
 </div>

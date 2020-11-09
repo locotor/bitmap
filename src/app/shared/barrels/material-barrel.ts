@@ -13,6 +13,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSelectModule } from '@angular/material/select';
+import { MatGridListModule } from '@angular/material/grid-list'
 
 export const MaterialModules = [
     MatSidenavModule,
@@ -29,5 +31,7 @@ export const MaterialModules = [
     MatInputModule,
     MatDialogModule,
     MatListModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSelectModule,
+    MatGridListModule
 ];
