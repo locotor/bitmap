@@ -82,11 +82,10 @@ export class WorkspaceComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.workspacesApi.deleteWorkspace(workspace.name).subscribe(resp => {
-          this.getWorkspacesList();
-        });
-      }
+      if (!result) return;
+      this.workspacesApi.deleteWorkspace(workspace.name).subscribe(resp => {
+        this.getWorkspacesList();
+      });
     });
   }
 

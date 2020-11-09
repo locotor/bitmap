@@ -41,7 +41,9 @@
                         </li>
                         <li nz-submenu nzTitle="服务管理" nzIcon="control">
                             <ul>
-                                <li nz-menu-item>服务管理</li>
+                                <li nz-menu-item>
+                                    <a [routerLink]="['/','layer-management']">服务管理</a>
+                                </li>
                                 <li nz-menu-item>
                                     <a [routerLink]="['/','layer-management','layer-preview']">服务预览</a>
                                 </li>

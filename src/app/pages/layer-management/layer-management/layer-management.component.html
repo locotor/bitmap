@@ -1,0 +1,32 @@
+<div class="layer-management-main-container mat-elevation-z2">
+    <h2>服务列表</h2>
+    <mat-divider></mat-divider>
+    <div class="table-header-operations">
+        <button mat-raised-button>新增服务</button>
+        <button mat-raised-button>移除选中的服务</button>
+    </div>
+    <nz-table #borderedTable nzBordered [nzData]="dataSource" [nzScroll]="{ y: '450px' }">
+        <thead>
+            <tr>
+                <th nzWidth="75px"></th>
+                <th>服务名称</th>
+                <th>href</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of borderedTable.data">
+                <td nzChecked></td>
+                <td>{{ data.name }}</td>
+                <td>{{ data.href }}</td>
+                <td>
+                    <a (click)="openDeleteLayerConfirm(data)">删除</a>
+                    <nz-divider nzType="vertical"></nz-divider>
+                    <a>编辑</a>
+                    <nz-divider nzType="vertical"></nz-divider>
+                    <mat-checkbox><a>启用</a></mat-checkbox>
+                </td>
+            </tr>
+        </tbody>
+    </nz-table>
+</div>
