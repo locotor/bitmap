@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataSourceService } from 'core/http-apis/data-source.service';
+import { LayerManagementService } from 'core/http-apis/layer-management.service';
 import { WorkspacesService } from 'core/http-apis/workspaces.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -10,9 +11,9 @@ import { map } from 'rxjs/operators';
 })
 export class PublishRootComponent implements OnInit {
   currentStep = 0;
+  workspace = '';
+  dataStore = '';
   formData = {
-    workspace: '',
-    dataStore: '',
     featureType: {
       name: "",
       title: "",
@@ -44,6 +45,7 @@ export class PublishRootComponent implements OnInit {
   constructor(
     private workspacesApi: WorkspacesService,
     private dataSourceApi: DataSourceService,
+    private LayerApi: LayerManagementService
   ) { }
 
   ngOnInit(): void {
@@ -73,7 +75,13 @@ export class PublishRootComponent implements OnInit {
   }
 
   publish(): void {
-    console.log('done');
+    this.LayerApi.addLayerByShapfile(
+      this.workspace,
+      this.dataStore,
+      this.formData.featureType
+    ).subscribe(resp => {
+      console.log(resp);
+    });
   }
 
 }

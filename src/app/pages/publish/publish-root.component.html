@@ -35,10 +35,10 @@
                     <div class="form-field-row">
                         <mat-form-field appearance="outline">
                             <mat-label>选择工作区</mat-label>
-                            <mat-select required (selectionChange)="handleWorkspaceSelected($event)">
+                            <mat-select [(value)]="workspace" required
+                                (selectionChange)="handleWorkspaceSelected($event)">
                                 <mat-option>--</mat-option>
-                                <mat-option *ngFor="let workspace of (workspaceList$ | async)" [value]="workspace.name"
-                                    ([ngModel])="formData.workspace">
+                                <mat-option *ngFor="let workspace of (workspaceList$ | async)" [value]="workspace.name">
                                     {{workspace.name}}
                                 </mat-option>
                             </mat-select>
@@ -47,8 +47,8 @@
                     <div class="form-field-row">
                         <mat-form-field appearance="outline">
                             <mat-label>选择数据源</mat-label>
-                            <mat-select required [disabled]="!dataStoreList||dataStoreList.length === 0"
-                                ([ngModel])="formData.dataStore">
+                            <mat-select [(value)]="dataStore" required
+                                [disabled]="!dataStoreList||dataStoreList.length === 0">
                                 <mat-option>--</mat-option>
                                 <mat-option *ngFor="let dataStore of dataStoreList" [value]="dataStore.name">
                                     {{dataStore.name}}

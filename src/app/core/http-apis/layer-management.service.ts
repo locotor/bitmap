@@ -15,6 +15,13 @@ export class LayerManagementService {
     return this.http.get('rest/layers');
   }
 
+  addLayerByShapfile(workspaceName: string, dataStoreName: string, featureType) {
+    return this.http.post(
+      `rest/workspaces/${workspaceName}/datastores/${dataStoreName}/featuretypes`,
+      { featureType }
+    );
+  }
+
   deleteWorkspace(layerName: string) {
     return this.http.delete(`rest/layers/${layerName}`);
   }
