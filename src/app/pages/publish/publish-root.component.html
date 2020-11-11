@@ -9,24 +9,37 @@
     <div class="steps-content">
         <form [ngSwitch]="currentStep" class="flex-center-container">
             <!-- 基础信息 -->
-            <div style="width: 50%;" *ngSwitchCase="0">
-                <div class="form-field-row">
-                    <mat-form-field appearance="outline">
-                        <mat-label>服务名称</mat-label>
-                        <input matInput required name="layerName" [(ngModel)]="formData.featureType.name">
-                    </mat-form-field>
+            <div style="width: 100%;height: 100%;" *ngSwitchCase="0" nz-row>
+                <div nz-col nzSpan="12" class="flex-center-container" style="flex-direction: column;">
+                    <div class="form-field-row">
+                        <mat-form-field appearance="outline">
+                            <mat-label>服务名称</mat-label>
+                            <input matInput required name="layerName" [(ngModel)]="formData.featureType.name">
+                        </mat-form-field>
+                    </div>
+                    <div class="form-field-row">
+                        <mat-form-field appearance="outline">
+                            <mat-label>服务标题</mat-label>
+                            <input matInput required name="layerTitle" [(ngModel)]="formData.featureType.title">
+                        </mat-form-field>
+                    </div>
+                    <div class="form-field-row">
+                        <mat-form-field appearance="outline">
+                            <mat-label>摘要</mat-label>
+                            <input matInput required name="namespace" [(ngModel)]="formData.featureType.abstract">
+                        </mat-form-field>
+                    </div>
                 </div>
-                <div class="form-field-row">
-                    <mat-form-field appearance="outline">
-                        <mat-label>服务标题</mat-label>
-                        <input matInput required name="layerTitle" [(ngModel)]="formData.featureType.title">
-                    </mat-form-field>
-                </div>
-                <div class="form-field-row">
-                    <mat-form-field appearance="outline">
-                        <mat-label>摘要</mat-label>
-                        <input matInput required name="namespace" [(ngModel)]="formData.featureType.abstract">
-                    </mat-form-field>
+                <div nz-col nzSpan="12" class="flex-center-container" style="flex-direction: column;">
+                    <mat-list style="width: 100%;padding: 20px;">
+                        <mat-list-item *ngFor="let attr of formData.featureType.attributes.attribute">
+                            <div class="attr-list-item">
+                                <span> {{attr.name}} </span>
+                                <button mat-button (click)="removeAttr(attr)">移除</button>
+                            </div>
+                        </mat-list-item>
+                    </mat-list>
+                    <button mat-raised-button (click)="openAttrCreateDialog()">新增属性</button>
                 </div>
             </div>
             <!-- 数据源配置 -->

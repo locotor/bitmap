@@ -1,0 +1,47 @@
+<h2 mat-dialog-title>新建属性</h2>
+<div mat-dialog-content class="dialog-content">
+    <form>
+        <div class="form-field-row">
+            <mat-form-field appearance="outline">
+                <mat-label>名称</mat-label>
+                <input matInput required name="attrName" [(ngModel)]="formData.name">
+            </mat-form-field>
+        </div>
+        <div class="form-field-row">
+            <mat-form-field appearance="outline">
+                <mat-label>类型</mat-label>
+                <mat-select required name="attrType" [(value)]="formData.binding">
+                    <mat-option value="java.lang.String">字符串</mat-option>
+                    <mat-option value="java.lang.Boolean">布尔</mat-option>
+                    <mat-option value="java.lang.Integer">整数</mat-option>
+                    <mat-option value="java.lang.Long">长整数</mat-option>
+                    <mat-option value="java.lang.Float">浮点数</mat-option>
+                    <mat-option value="java.lang.Double">双精度浮点数</mat-option>
+                    <mat-option value="java.sql.Date">日期</mat-option>
+                    <mat-option value="java.sql.Time">时间</mat-option>
+                    <mat-option value="java.sql.Timestamp">日期和时间</mat-option>
+                    <mat-option value="org.locationtech.jts.geom.Geometry">通用几何体</mat-option>
+                    <mat-option selected="selected" value="org.locationtech.jts.geom.Point">点</mat-option>
+                    <mat-option value="org.locationtech.jts.geom.LineString">线</mat-option>
+                    <mat-option value="org.locationtech.jts.geom.Polygon">面</mat-option>
+                    <mat-option value="org.locationtech.jts.geom.MultiPoint">多点</mat-option>
+                    <mat-option value="org.locationtech.jts.geom.MultiLineString">多线</mat-option>
+                    <mat-option value="org.locationtech.jts.geom.MultiPolygon">多面</mat-option>
+                    <mat-option value="org.locationtech.jts.geom.GeometryCollection">几何体集合</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <!-- <div class="form-field-row">
+            <mat-form-field appearance="outline">
+                <mat-label>参考坐标系统</mat-label>
+                <input matInput name="attrSRS">
+            </mat-form-field>
+        </div> -->
+        <mat-checkbox [(ngModel)]="formData.nillable" name="nillable">启用</mat-checkbox>
+    </form>
+</div>
+<mat-divider></mat-divider>
+<div mat-dialog-actions class="dialog-actions">
+    <button mat-raised-button [mat-dialog-close]="formData">新建</button>
+    <button mat-button [mat-dialog-close]="false">取消</button>
+</div>

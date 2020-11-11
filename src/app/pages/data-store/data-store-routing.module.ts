@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { DataSourceComponent } from './data-source/data-source.component';
 import { StylesComponent } from './styles/styles.component';
-import { DataSourceComponent } from './workspace/data-source/data-source.component';
 import { WorkspaceComponent } from './workspace/workspace.component';
 
 
